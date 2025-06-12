@@ -8,18 +8,14 @@ default_args = {
 }
 
 with DAG(
-    dag_id='spark_job_dag',
+    dag_id='hello_world_dag',
     default_args=default_args,
     catchup=False,
-    description='Run Spark job via BashOperator',
+    description='A simple Hello World DAG',
     schedule_interval=None,
 ) as dag:
 
-    run_spark_job = BashOperator(
-        task_id='run_spark_submit',
-        bash_command="""
-            spark-submit \
-            --master local[*] \
-            ./my_spark_job.py
-        """
+    hello_task = BashOperator(
+        task_id='print_hello',
+        bash_command='echo "Hello, World!"'
     )
