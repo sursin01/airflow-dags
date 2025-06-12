@@ -1,7 +1,5 @@
 from airflow import DAG
-from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator  # for SQL
-from airflow.providers.standard.operators.bash import BashOperator
-
+from airflow.operators.bash import BashOperator
 from datetime import datetime
 
 default_args = {
@@ -14,6 +12,7 @@ with DAG(
     default_args=default_args,
     catchup=False,
     description='Run Spark job via BashOperator',
+    schedule_interval=None,
 ) as dag:
 
     run_spark_job = BashOperator(
