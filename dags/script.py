@@ -12,7 +12,7 @@ with DAG(
     default_args=default_args,
     catchup=False,
     description='A simple Hello World DAG',
-    schedule_interval=None,
+
 ) as dag:
 
     hello_task = BashOperator(
